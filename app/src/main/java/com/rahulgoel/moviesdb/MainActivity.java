@@ -4,6 +4,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.rahulgoel.moviesdb.Movie_Detail.Movie_result;
+import com.rahulgoel.moviesdb.network.ApiClient;
+
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,6 +32,18 @@ public class MainActivity extends AppCompatActivity {
         int id = v.getId();
         if(id == R.id.button_tr)
         {
+            Call<Movie_result> allUserCall = ApiClient.getInterface().getTopRated("c6c78d348b8d5ac03cf81336bb11f651");
+            allUserCall.enqueue(new Callback<Movie_result>() {
+                @Override
+                public void onResponse(Call<Movie_result> call, Response<Movie_result> response) {
+                    Movie_result movies = response.body();
+                    Toast.makeText(MainActivity.this,"Hello ", Toast.LENGTH_SHORT).show();
+                }
+                @Override
+                public void onFailure(Call<Movie_result> call, Throwable t) {
+
+                }
+            });
 
         }
         if(id == R.id.button_up)
