@@ -8,7 +8,10 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.rahulgoel.moviesdb.Movie_Detail.Movie_result;
+import com.rahulgoel.moviesdb.Movie_Detail.NowPlaying;
+import com.rahulgoel.moviesdb.Movie_Detail.Popular;
 import com.rahulgoel.moviesdb.Movie_Detail.Top_Rated;
+import com.rahulgoel.moviesdb.Movie_Detail.Upcoming;
 import com.rahulgoel.moviesdb.network.ApiClient;
 
 import java.util.ArrayList;
@@ -37,41 +40,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        button_up.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.setClass(getApplicationContext(),Upcoming.class);
+                startActivity(i);
+            }
+        });
 
-           }
-/*
-    public void onClick(View v){
-        int id = v.getId();
-        if(id == R.id.button_tr)
+        button_po.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.setClass(getApplicationContext(), Popular.class);
+                startActivity(i);
+            }
+        });
 
-        {
-            Call<Movie_result> allUserCall = ApiClient.getInterface().getTopRated("c6c78d348b8d5ac03cf81336bb11f651");
-            allUserCall.enqueue(new Callback<Movie_result>() {
-                @Override
-                public void onResponse(Call<Movie_result> call, Response<Movie_result> response) {
-                    Movie_result movies = response.body();
-                    Toast.makeText(MainActivity.this,"Hello ", Toast.LENGTH_SHORT).show();
-                }
-                @Override
-                public void onFailure(Call<Movie_result> call, Throwable t) {
+        button_np.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.setClass(getApplicationContext(), NowPlaying.class);
+                startActivity(i);
+            }
+        });
 
-                }
-            });
-
-        }
-        if(id == R.id.button_up)
-        {
-
-        }
-        if(id == R.id.button_np)
-        {
-
-        }
-        if(id == R.id.button_po)
-        {
-
-        }
     }
-*/
-
 }

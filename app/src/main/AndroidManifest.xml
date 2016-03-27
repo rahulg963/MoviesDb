@@ -17,7 +17,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Movie_Detail.Top_Rated"></activity>
+        <activity android:name=".Movie_Detail.Top_Rated" />
+        <activity
+            android:name=".Movie_Detail.Upcoming"
+            android:label="@string/title_activity_upcoming"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Movie_Detail.Popular" />
+        <activity android:name=".Movie_Detail.NowPlaying"></activity>
     </application>
 
 </manifest>

@@ -19,7 +19,7 @@ public class ApiClient {
             Gson gson = new GsonBuilder()
                     .excludeFieldsWithModifiers(Modifier.TRANSIENT, Modifier.STATIC)
                     .create();
-
+            //
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl("https://api.themoviedb.org/3/movie/")
                     .addConverterFactory(GsonConverterFactory.create(gson))
