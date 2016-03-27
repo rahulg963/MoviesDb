@@ -18,12 +18,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".Movie_Detail.Top_Rated" />
-        <activity
-            android:name=".Movie_Detail.Upcoming"
-            android:label="@string/title_activity_upcoming"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Movie_Detail.Popular" />
-        <activity android:name=".Movie_Detail.NowPlaying"></activity>
+        <activity android:name=".Movie_Detail.NowPlaying" />
+        <activity android:name=".Movie_Detail.Upcoming" />
+        <activity
+            android:name=".Movie_Detail.DetailedMovie"
+            android:label="@string/title_activity_detailed_movie"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -5,20 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.rahulgoel.moviesdb.Movie_Detail.Movie_result;
 import com.rahulgoel.moviesdb.Movie_Detail.NowPlaying;
 import com.rahulgoel.moviesdb.Movie_Detail.Popular;
 import com.rahulgoel.moviesdb.Movie_Detail.Top_Rated;
 import com.rahulgoel.moviesdb.Movie_Detail.Upcoming;
-import com.rahulgoel.moviesdb.network.ApiClient;
-
-import java.util.ArrayList;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 

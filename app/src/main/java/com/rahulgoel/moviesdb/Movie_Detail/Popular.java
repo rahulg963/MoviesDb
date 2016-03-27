@@ -1,7 +1,10 @@
 package com.rahulgoel.moviesdb.Movie_Detail;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.rahulgoel.moviesdb.R;
@@ -28,7 +31,17 @@ public class Popular extends AppCompatActivity {
         lv = (ListView) findViewById(R.id.listView);
         adapter = new MovieAdapter(this, movieList);
         lv.setAdapter(adapter);
-
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Movie movie = movieList.get(position);
+                //Toast.makeText(Top_Rated.this,movie.getOriginal_title(), Toast.LENGTH_LONG).show();
+                Intent i = new Intent();
+                i.setClass(Popular.this, DetailedMovie.class);
+                i.putExtra("DetailedMovie", movie);
+                startActivity(i);
+            }
+        });
         Call<Movie_result> allUserCall = ApiClient.getInterface().getPopular("c6c78d348b8d5ac03cf81336bb11f651");
         allUserCall.enqueue(new Callback<Movie_result>() {
             @Override

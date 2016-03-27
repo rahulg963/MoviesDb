@@ -1,12 +1,16 @@
 package com.rahulgoel.moviesdb.Movie_Detail;
 
+import java.io.Serializable;
+
 /**
  * Created by Rahul Goel on 3/27/2016.
  */
-public class Movie {
+public class Movie implements Serializable {
     private boolean adult;
     private String release_date;
     private String original_title;
+    private String original_language;
+    private double vote_average;
 
     public boolean isAdult() {
         return adult;
@@ -47,7 +51,4 @@ public class Movie {
     public void setVote_average(double vote_average) {
         this.vote_average = vote_average;
     }
-
-    private String original_language;
-    private double vote_average;
 }
