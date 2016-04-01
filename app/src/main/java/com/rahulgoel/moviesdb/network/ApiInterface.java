@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -23,4 +24,10 @@ public interface ApiInterface {
 
     @GET("now_playing")
     Call<Movie_result> getNowPlaying(@Query("api_key") String api_key);
+
+//    https://api.themoviedb.org/3/search/keyword?api_key=c6c78d348b8d5ac03cf81336bb11f651&query=dawn
+
+    @GET("search/movie/{query}")
+    Call<Movie_result> getResult(@Query("api_key") String api_key, @Query("query") String query);
+
 }

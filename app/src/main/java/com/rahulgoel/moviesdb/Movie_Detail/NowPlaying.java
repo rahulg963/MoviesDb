@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.rahulgoel.moviesdb.R;
 import com.rahulgoel.moviesdb.network.ApiClient;
@@ -22,7 +23,7 @@ public class NowPlaying extends AppCompatActivity {
     ArrayList<Movie> movieList;
     ListView lv;
     MovieAdapter adapter;
-
+    private ProgressBar progress;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,12 +45,15 @@ public class NowPlaying extends AppCompatActivity {
             }
         });
 
+        progress = (ProgressBar) findViewById(R.id.progress);
+        progress.setVisibility(ProgressBar.VISIBLE);
+
         Call<Movie_result> allUserCall = ApiClient.getInterface().getNowPlaying("c6c78d348b8d5ac03cf81336bb11f651");
         allUserCall.enqueue(new Callback<Movie_result>() {
             @Override
             public void onResponse(Call<Movie_result> call, Response<Movie_result> response) {
                 Movie_result movies_result = response.body();
-
+                progress.setVisibility(ProgressBar.GONE);
                 for (int i = 0; i < 20; i++) {
                     movieList.add(movies_result.getResults().get(i));
 
@@ -59,7 +63,7 @@ public class NowPlaying extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Movie_result> call, Throwable t) {
-
+                progress.setVisibility(ProgressBar.GONE);
             }
         });
 
