@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -21,7 +22,7 @@ public class Popular extends AppCompatActivity {
 
 
     ArrayList<Movie> movieList;
-    ListView lv;
+    GridView gv;
     MovieAdapter adapter;
     private ProgressBar progress;
     @Override
@@ -29,10 +30,10 @@ public class Popular extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_list);
         movieList = new ArrayList<Movie>();
-        lv = (ListView) findViewById(R.id.listView);
+        gv = (GridView) findViewById(R.id.gridView);
         adapter = new MovieAdapter(this, movieList);
-        lv.setAdapter(adapter);
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        gv.setAdapter(adapter);
+        gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Movie movie = movieList.get(position);

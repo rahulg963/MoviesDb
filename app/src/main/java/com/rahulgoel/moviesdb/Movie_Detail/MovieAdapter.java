@@ -4,9 +4,11 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.rahulgoel.moviesdb.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,23 +27,27 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
     }
     public static class ViewHolder
     {
-        TextView movie_name_list;
+        ImageView top;
+        TextView bottom;
+        //TextView movie_name_list;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if(convertView == null)
+        if(convertView==null)
         {
-            convertView = View.inflate(context, R.layout.adapter_top_rated, null);
-            TextView movie_name_list = (TextView)convertView.findViewById(R.id.textView);
-            ViewHolder vh = new ViewHolder();
-            vh.movie_name_list = movie_name_list;
+            convertView=View.inflate(context,R.layout.adapter_top_rated,null);
+            ViewHolder vh=new ViewHolder();
+            ImageView top=(ImageView)convertView.findViewById(R.id.poster);
+            TextView bottom=(TextView)convertView.findViewById(R.id.moviename);
+            vh.top=top;
+            vh.bottom=bottom;
             convertView.setTag(vh);
         }
-        Movie movie = movieList.get(position);
-        ViewHolder vh = (ViewHolder)convertView.getTag();
-        vh.movie_name_list.setText(movie.getOriginal_title());
+        ViewHolder vh=(ViewHolder)convertView.getTag();
+        Picasso.with(context).load("https://image.tmdb.org/t/p/w185"+movieList.get(position).getPoster_path()).fit().into(vh.top);
+        vh.bottom.setText(movieList.get(position).getOriginal_title());
         return convertView;
-        //return super.getView(position, convertView, parent);
+
     }
 }

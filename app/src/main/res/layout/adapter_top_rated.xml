@@ -2,12 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     android:weightSum="1">
 
+    <ImageView
+        android:layout_width="195dp"
+        android:layout_height="250dp"
+        android:id="@+id/poster"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="2dp" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="New Text"
-        android:id="@+id/textView"
-        android:layout_weight="0.07" />
+
+        android:text="MOVIE"
+        android:textColor="#FFFFFF"
+        android:layout_width="195dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/moviename"
+        android:textSize="15sp"
+        android:background="#f33a5b"
+        android:paddingLeft="20dp" />
 </LinearLayout>

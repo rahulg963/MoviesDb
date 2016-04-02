@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -22,7 +23,7 @@ import retrofit2.Response;
 public class Top_Rated extends AppCompatActivity {
 
     ArrayList<Movie> movieList;
-    ListView lv;
+    GridView lv;
     MovieAdapter adapter;
     private ProgressBar progress;
     @Override
@@ -30,7 +31,7 @@ public class Top_Rated extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_list);
         movieList = new ArrayList<Movie>();
-        lv = (ListView)findViewById(R.id.listView);
+        lv = (GridView)findViewById(R.id.gridView);
         adapter = new MovieAdapter(this,movieList);
         lv.setAdapter(adapter);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {

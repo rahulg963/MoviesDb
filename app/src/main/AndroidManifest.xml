@@ -24,6 +24,10 @@
         <activity
             android:name=".Movie_Detail.DetailedMovie"
             android:label="@string/title_activity_detailed_movie"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Movie_Detail.searchResult"
+            android:label="@string/title_activity_search_result"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

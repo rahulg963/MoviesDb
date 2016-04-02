@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<Movie_result> call, Response<Movie_result> response) {
                 Toast.makeText(getApplicationContext(),"Got Result",Toast.LENGTH_SHORT).show();
                 Movie_result movies_result = response.body();
+                //Intent i = new Intent();
 
             }
             @Override

@@ -2,4 +2,8 @@
     <string name="app_name">MoviesDb</string>
     <string name="title_activity_upcoming">Upcoming</string>
     <string name="title_activity_detailed_movie">DetailedMovie</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_search_result">searchResult</string>
 </resources>
