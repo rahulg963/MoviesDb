@@ -32,7 +32,7 @@ public class Upcoming extends AppCompatActivity {
         lv = (GridView)findViewById(R.id.gridView);
         adapter = new MovieAdapter(this,movieList);
         lv.setAdapter(adapter);
-
+        Upcoming.this.setTitle("Upcoming");
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

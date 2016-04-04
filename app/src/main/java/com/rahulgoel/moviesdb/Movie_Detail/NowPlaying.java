@@ -30,6 +30,7 @@ public class NowPlaying extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_list);
         movieList = new ArrayList<Movie>();
+        NowPlaying.this.setTitle("NowPlaying");
         lv = (GridView) findViewById(R.id.gridView);
         adapter = new MovieAdapter(this, movieList);
         lv.setAdapter(adapter);

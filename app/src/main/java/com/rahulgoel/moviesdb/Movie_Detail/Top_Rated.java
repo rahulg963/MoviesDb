@@ -34,6 +34,7 @@ public class Top_Rated extends AppCompatActivity {
         lv = (GridView)findViewById(R.id.gridView);
         adapter = new MovieAdapter(this,movieList);
         lv.setAdapter(adapter);
+        Top_Rated.this.setTitle("Top Rated");
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -56,7 +57,6 @@ public class Top_Rated extends AppCompatActivity {
                 progress.setVisibility(ProgressBar.GONE);
                 for (int i = 0; i < 20; i++) {
                     movieList.add(movies_result.getResults().get(i));
-
                 }
                 adapter.notifyDataSetChanged();
             }

@@ -30,12 +30,12 @@ public class DetailedMovie extends AppCompatActivity {
         vote_average = (TextView) findViewById(R.id.vote_average);
 
         movie = (Movie)getIntent().getSerializableExtra("DetailedMovie");
-
-        adult.setText(" Is Adult : " + movie.isAdult() );
+        //DetailedMovie.this.setTitle(movie.getOriginal_title());
+        adult.setText(" Is Adult : " + movie.isAdult());
         release_date.setText( "Release Date : " + movie.getRelease_date());
         original_language.setText(" Language : " + movie.getOriginal_language());
         original_title.setText(" Title : " + movie.getOriginal_title());
         vote_average.setText(" Vote Average : " + movie.getVote_average());
-    }
 
+    }
 }

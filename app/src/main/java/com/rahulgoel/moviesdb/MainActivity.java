@@ -9,21 +9,28 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.rahulgoel.moviesdb.Movie_Detail.Movie;
+import com.rahulgoel.moviesdb.Movie_Detail.MovieAdapter;
 import com.rahulgoel.moviesdb.Movie_Detail.Movie_result;
 import com.rahulgoel.moviesdb.Movie_Detail.NowPlaying;
 import com.rahulgoel.moviesdb.Movie_Detail.Popular;
 import com.rahulgoel.moviesdb.Movie_Detail.Top_Rated;
 import com.rahulgoel.moviesdb.Movie_Detail.Upcoming;
+import com.rahulgoel.moviesdb.Movie_Detail.searchResult;
 import com.rahulgoel.moviesdb.network.ApiClient;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-
+    ArrayList<Movie> movieList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,8 +86,15 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<Movie_result> call, Response<Movie_result> response) {
                 Toast.makeText(getApplicationContext(),"Got Result",Toast.LENGTH_SHORT).show();
                 Movie_result movies_result = response.body();
-                //Intent i = new Intent();
-
+                movieList = new ArrayList<Movie>();
+                for (int j = 0; j < 20; j++)
+                {
+                    movieList.add(movies_result.getResults().get(j));
+                }
+                Intent i = new Intent();
+                i.setClass(MainActivity.this,searchResult.class);
+                i.putExtra("searchedMovies", movieList);
+                startActivity(i);
             }
             @Override
             public void onFailure(Call<Movie_result> call, Throwable t) {
@@ -97,6 +111,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextSubmit(String query) {
+                Toast.makeText(getApplicationContext(),"Searching",Toast.LENGTH_SHORT).show();
+/*
                 //Toast.makeText(getApplicationContext(),"Searching",Toast.LENGTH_SHORT).show();
                 // Fetch the data remotely
                 fetchMovies(query);
@@ -107,6 +123,11 @@ public class MainActivity extends AppCompatActivity {
                 searchItem.collapseActionView();
                 // Set activity title to search query
                 // MainActivity.this.setTitle(query);
+*/
+                Intent i = new Intent();
+                i.setClass(MainActivity.this, searchResult.class);
+                i.putExtra("searchedMovies",query);
+                startActivity(i);
                 return true;
             }
 

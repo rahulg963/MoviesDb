@@ -33,6 +33,7 @@ public class Popular extends AppCompatActivity {
         gv = (GridView) findViewById(R.id.gridView);
         adapter = new MovieAdapter(this, movieList);
         gv.setAdapter(adapter);
+        Popular.this.setTitle("Popular");
         gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

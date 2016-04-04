@@ -13,21 +13,21 @@ import retrofit2.http.Query;
  * Created by vaibhav singh on 3/27/2016.
  */
 public interface ApiInterface {
-    @GET("top_rated")
+    @GET("movie/top_rated")
     Call<Movie_result> getTopRated(@Query("api_key") String api_key);
 
-    @GET("upcoming")
+    @GET("movie/upcoming")
     Call<Movie_result> getUpcoming(@Query("api_key") String api_key);
 
-    @GET("popular")
+    @GET("movie/popular")
     Call<Movie_result> getPopular(@Query("api_key") String api_key);
 
-    @GET("now_playing")
+    @GET("movie/now_playing")
     Call<Movie_result> getNowPlaying(@Query("api_key") String api_key);
 
 //    https://api.themoviedb.org/3/search/keyword?api_key=c6c78d348b8d5ac03cf81336bb11f651&query=dawn
 
-    @GET("search/movie/{query}")
+    @GET("search/movie")
     Call<Movie_result> getResult(@Query("api_key") String api_key, @Query("query") String query);
 
 }
