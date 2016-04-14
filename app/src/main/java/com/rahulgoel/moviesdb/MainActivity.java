@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Toast.makeText(getApplicationContext(),"Searching",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Searching...",Toast.LENGTH_SHORT).show();
 /*
                 //Toast.makeText(getApplicationContext(),"Searching",Toast.LENGTH_SHORT).show();
                 // Fetch the data remotely

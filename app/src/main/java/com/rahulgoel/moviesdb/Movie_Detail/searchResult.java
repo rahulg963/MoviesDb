@@ -13,45 +13,61 @@ import com.rahulgoel.moviesdb.R;
 import com.rahulgoel.moviesdb.network.ApiClient;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class searchResult extends AppCompatActivity {
-
     ArrayList<Movie> movieList;
     GridView lv;
     MovieAdapter adapter;
     private ProgressBar progress;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_result2);
+        setContentView(R.layout.activity_movie_list);
+
         movieList = new ArrayList<Movie>();
         lv = (GridView)findViewById(R.id.gridView);
-        searchResult.this.setTitle("Searched Movies");
         adapter = new MovieAdapter(this,movieList);
         lv.setAdapter(adapter);
+        searchResult.this.setTitle("Searched Results");
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Movie movie = movieList.get(position);
+                //Toast.makeText(Top_Rated.this,movie.getOriginal_title(), Toast.LENGTH_LONG).show();
+                Intent i = new Intent();
+                i.setClass(searchResult.this, DetailedMovie.class);
+                i.putExtra("DetailedMovie", movie);
+                startActivity(i);
+            }
+        });
+
+        progress = (ProgressBar) findViewById(R.id.progress);
+        progress.setVisibility(ProgressBar.VISIBLE);
         Intent intent = getIntent();
         String query = intent.getExtras().getString("searchedMovies");
+
         Call<Movie_result> allUserCall = ApiClient.getInterface().getResult("c6c78d348b8d5ac03cf81336bb11f651", query);
         allUserCall.enqueue(new Callback<Movie_result>() {
             @Override
             public void onResponse(Call<Movie_result> call, Response<Movie_result> response) {
                 Movie_result movies_result = response.body();
-               // progress.setVisibility(ProgressBar.GONE);
-                Log.i("Response", "Data Received");
+                progress.setVisibility(ProgressBar.GONE);
                 for (int i = 0; i < 20; i++) {
                     movieList.add(movies_result.getResults().get(i));
                 }
                 adapter.notifyDataSetChanged();
-                Log.e("item", movieList.get(0).getOriginal_title());
             }
+
             @Override
             public void onFailure(Call<Movie_result> call, Throwable t) {
-                Log.i("Failure","Not Received");
+//                progress.setVisibility(ProgressBar.GONE);
             }
         });
     }
