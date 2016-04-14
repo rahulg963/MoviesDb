@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import com.rahulgoel.moviesdb.MainActivity;
 import com.rahulgoel.moviesdb.R;
 import com.rahulgoel.moviesdb.network.ApiClient;
 
@@ -52,19 +54,27 @@ public class searchResult extends AppCompatActivity {
         progress.setVisibility(ProgressBar.VISIBLE);
         Intent intent = getIntent();
         String query = intent.getExtras().getString("searchedMovies");
-
+        //https://api.themoviedb.org/3/search/movie?api_key=c6c78d348b8d5ac03cf81336bb11f651&query=batman
         Call<Movie_result> allUserCall = ApiClient.getInterface().getResult("c6c78d348b8d5ac03cf81336bb11f651", query);
         allUserCall.enqueue(new Callback<Movie_result>() {
             @Override
             public void onResponse(Call<Movie_result> call, Response<Movie_result> response) {
                 Movie_result movies_result = response.body();
                 progress.setVisibility(ProgressBar.GONE);
-                for (int i = 0; i < 20; i++) {
-                    movieList.add(movies_result.getResults().get(i));
+                if (movies_result.results.size() != 0 )
+                {
+                    for (int i = 0; i < 20; i++) {
+                        movieList.add(movies_result.getResults().get(i));
+                    }
+                    adapter.notifyDataSetChanged();
                 }
-                adapter.notifyDataSetChanged();
+                else {
+                    Intent i = new Intent();
+                    i.setClass(searchResult.this, MainActivity.class);
+                    startActivity(i);
+                    Toast.makeText(getApplicationContext(),"INVALID ENTRY",Toast.LENGTH_LONG).show();
+                }
             }
-
             @Override
             public void onFailure(Call<Movie_result> call, Throwable t) {
 //                progress.setVisibility(ProgressBar.GONE);
